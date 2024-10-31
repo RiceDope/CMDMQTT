@@ -9,6 +9,7 @@ author: Rhys Walker
 """
 
 def run():
+    # Setup the connection
     broker = getBroker()
     clear()
     port = getPort()
@@ -20,18 +21,22 @@ def run():
     while(True):
         print("Options: \nquit - Quits the program \nct - Changes the topic")
         message = input("What would you like to send\n>>>")
-        if message=="quit":
+        if message=="quit": # Quit the application
             break
-        elif message=="ct":
+        elif message=="ct": # Change Topic
             clear()
             topic = getTopic()
             clear()
-            print("Topic changed successfully\n")
+            print("Topic changed successfully\n") # Success message
             continue
+
+        # Try publishing the message
         try:
             client.publish(topic, message)
             clear()
-            print("Message posted successfully\n")
+            print("Message posted successfully\n") # Success message
+
+        # Allow the user to fix any issue that the topic has introduced
         except:
             clear()
             print("Cannot use wildcards in publish")
@@ -39,6 +44,8 @@ def run():
             ct = input(">>>")
             if ct == "y":
                 topic = getTopic()
+                clear()
+                print("Topic changed successfully\n") # Success message
             else:
                 break
 

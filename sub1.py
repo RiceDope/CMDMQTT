@@ -9,7 +9,7 @@ author: Rhys Walker
 """
 
 def run():
-    # Setup connection
+    # Setup the connection
     broker = getBroker()
     clear()
     port = getPort()
